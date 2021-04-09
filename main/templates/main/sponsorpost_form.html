@@ -1,0 +1,27 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+
+<section id="contentSection"> 
+    <div class="content-sectionsio">
+{% load i18n %}
+{% language 'sq' %}
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group row content-sectionsio">
+                <h3 style="text-align: center;" class="mb-4">Krijo Sponsor Post</h3>
+
+                {{ form.media}}
+                {{ form.as_p }}
+
+            </fieldset> 
+            <div class="form-group">
+                <button style="width: 100%" class="btn btn-success" type="submit">Posto</button>
+            </div>
+        </form>
+{% endlanguage %}
+    </div>
+
+</section>
+    {% endblock %}
+

@@ -1,0 +1,87 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block content %}
+
+
+<section id='contentSection'>
+
+  {% for p in profile %}
+
+  <p style="text-align: center;"><img style="border-radius: 40%; width: 200px; height: 200px; object-fit: cover;" src="{{ p.image.url }}">
+    <br><h2 style="text-align: center; border-bottom: 0.2px solid; border-color: #EBEBEB;" class="account-headingio"><i style="color: #EB4646;" class="fa fa-user"></i> {{ p.user.username}}</h2>
+    <!-- <p style="font-weight: bold; text-align: center; " class="text-secondary"><i style="color: #EB4646;" class="fa fa-envelope"></i> {{ p.user.email }}</p>
+    <p style="font-weight: bold; text-align: center; " class="text-secondary"><i style="color: #EB4646;" class="fa fa-birthday-cake"></i> {{ p.ditlindja }}</p>
+    <p style="font-weight: bold; text-align: center; border-bottom: 0.2px solid; border-color: #EBEBEB; " class="text-secondary"><i style="color: #EB4646;" class="fa fa-transgender"></i> {{ p.gjinia }}</p> -->
+    <p style="font-weight: bold; text-align: center; margin-top: 2.5rem; font-size: 20px; ">Publikime: (<small style="color: #EB4646;">{{ page_obj.paginator.count }}</small>)
+    </p>
+  </p>
+</br>
+
+
+    {% endfor %}
+  </section>
+  <section id="contentSection">
+
+    <div class="fashion_technology_area">
+            <div class="fashionsio">
+              <div class="single_post_content">
+                <ul class="business_catgnav wow fadeInDown">
+                  <div class="grid-container infinite-container">
+
+                  {% for post in lajmets %}
+                  <div class="item1 infinite-item">
+                  <li>
+                    <figure class="bsbig_figi"> <a href="{% url 'lajme-detail' post.id post.slug %}" class="featured_img"> <img class="katmon" alt="" src="{{MEDIA_URL}}{{post.fotografit.url}}"> </a>
+                      <figcaption style="font-size: 15px;"> <a href="{% url 'lajme-detail' post.id post.slug %}">{{post.titulli}}</a>
+                        <p>
+                        <small style="font-size: 10px;" class="text-muted">
+                      {% load i18n %}
+                      {% language 'sq' %}
+                      {{post.data_e_postimit|date:"d F / Y | G:i"}}
+                      {% endlanguage %}
+                    </small>
+                  </p>
+                       </figcaption>
+                    </figure>
+                  </li>
+                  </div>
+                  {% endfor %}
+
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12" >
+                  {% if is_paginated %}
+
+                    {% if page_obj.has_previous %}
+                      <a style="border-radius: 30%; background-color: #DDDDDD;" class="btn" href="?page=1">Fillimi</a>
+                      <a style="border-radius: 30%;" class="btn btn-danger" href="?page={{ page_obj.previous_page_number }}"><</a>
+                    {% endif %}
+
+                    {% for num in page_obj.paginator.page_range %}
+                      {% if page_obj.number == num %}
+                        <a style="background-color: #FFE6E6; border-radius: 50%;" class="btn" href="?page={{ num }}">{{ num }}</a>
+                      {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                        <a class="btn btn-outline-info" href="?page={{ num }}">{{ num }}</a>
+                      {% endif %}
+                    {% endfor %}
+
+                    {% if page_obj.has_next %}
+                      <a style="border-radius: 30%;" class="btn btn-danger" href="?page={{ page_obj.next_page_number }}">></a>
+                      <a style="border-radius: 30%; background-color: #DDDDDD;" class="btn" href="?page={{ page_obj.paginator.num_pages }}">Fundi</a>
+                    {% endif %}
+
+                  {% endif %}
+        </div>
+        </div>
+
+                </ul>
+          </div>
+      </div>
+  </div>
+
+  </section>
+
+
+
+{% endblock %}

@@ -1,0 +1,128 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+<section id="sliderSection">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="slick_slider">
+          {% for lajm in lajmet %}
+          {% if forloop.counter < 4 %}
+          <div class="single_iteam"> <a href="{% url 'lajme-detail' lajm.id lajm.slug %}"> <img src="{{MEDIA_URL}}{{lajm.fotografit.url}}" alt=""></a>
+            <div class="slider_article">
+              <h2 style="text-transform: uppercase; text-shadow: 0.7px 0.7px #000000;"><a class="slider_tittle" href="{% url 'lajme-detail' lajm.id lajm.slug %}">{{lajm.titulli}}</a></h2>
+
+            </div>
+          </div>
+          {% endif %}
+            {% endfor %}
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4">
+        <aside class="right_content">
+          <div class="single_sidebar">
+            <h2><span>{{ kategorit.title }}</span></h2>
+            <ul class="spost_nav">
+              {% for read in lajms %}
+              {% if forloop.counter < 5 %}
+              <li>
+                <div style="margin-top: 1rem;" class="media wow fadeInDown"> <a href="{% url 'lajme-detail' read.id read.slug %}" class="media-left"> <img alt="" src="{{MEDIA_URL}}{{read.fotografit.url}}"> </a>
+                  <div class="media-body"> <a href="{% url 'lajme-detail' read.id read.slug %}" class="catg_title"> {{ read.titulli }} </a> </div>
+                </div>
+              </li>
+              {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+    </div>
+  </section>
+
+
+  <section id='contentSection'>
+  	
+  	<div class="fashion_technology_area">
+            <div class="fashionsio">
+              <div class="single_post_content">
+                <ul class="business_catgnav wow fadeInDown">
+                	<div class="grid-container infinite-container">
+
+                  {% for laj in page_obj %}
+                  <div class="item1 infinite-item">
+                  <li>
+                    <figure class="bsbig_figi"> <a href="{% url 'lajme-detail' laj.id laj.slug %}" class="featured_img"> <img class="katmon" alt="" src="{{MEDIA_URL}}{{laj.fotografit.url}}"> </a>
+                      <figcaption style="font-size: 15px;"> <a href="{% url 'lajme-detail' laj.id laj.slug %}">{{laj.titulli}}</a>
+                        <p>
+                        <small style="font-size: 10px;" class="text-muted">
+                      {% load i18n %}
+                      {% language 'sq' %}
+                      {{laj.data_e_postimit|date:"d F / Y | G:i"}}
+                      {% endlanguage %}
+                    </small>
+                  </p>
+                       </figcaption>
+                    </figure>
+                  </li>
+              		</div>
+                  {% endfor %}
+
+                  </div>
+
+                  <div class="row">
+                    <div class="col-12">
+                      {% if page_obj.has_next %}
+                      <a style="display: block; width: 60%; margin-left: auto; margin-right: auto;" class="infinite-more-link btn btn-danger" href="?page={{ page_obj.next_page_number }}">Shfaqë më të vjetra</a>
+                      {% endif %}
+                    </div>
+                  </div>
+
+                </ul>
+	        </div>
+	    </div>
+	</div>
+
+  </section>
+
+<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'js/infinite.min.js' %}"></script>
+
+  <script>
+    var infinite = new Waypoint.Infinite({
+        element: $('.infinite-container')[0],
+
+        offset: 'bottom-in-view',
+
+        onBeforePageLoad: function () {
+
+        },
+        onAfterPageLoad: function () {
+
+        }
+    });
+  </script>
+
+
+
+
+<!-- <main class="container mt-3 mb-5">
+	<h3 class="border-bottom pb-1 my-4">{{kategorit.title}}</h3>
+   
+    {% for lajm in lajmet %}
+	<div class="card mb-4 shadow">
+	  <div class="row no-gutters">
+	    <div class="col-md-3">
+            <img style="max-width: 200px;" src="{{MEDIA_URL}}{{lajm.fotografit.url}}" class="card-img-top" alt="{{lajm.titulli}}">
+	    </div>
+	    <div class="col-md-8">
+	      <div class="card-body">
+	        <h5 class="card-title">{{lajm.titulli}}</h5>
+	        <p class="card-text">{{lajm.detajet|safe}}</p>
+	        <p class="card-text"><a href="{% url 'lajme-detail' lajm.id lajm.slug %}" class="btn btn-sm btn-primary">Read Full</a></p>
+	      </div>
+	    </div>
+	  </div>
+    </div>
+    {% endfor %}
+</main> -->
+{% endblock %}

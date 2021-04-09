@@ -1,0 +1,188 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html prefix="og: https://ogp.me/ns#">
+<head>
+
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="icon" href="{% static 'assets/css/images/iconajeme.png' %}">
+
+ {% if object.slug in request.path %}
+    <title>{{object.titulli}}</title>
+    <meta property="og:title" content="{{object.titulli}}">
+    <meta property="og:description" content="{{object.detajet|striptags|truncatewords:30}}">
+    <meta property="og:image"content="https://gazetarja.com/{{MEDIA_URL}}{{object.fotografit.url}}">
+    <meta property="og:image:alt" content="https://gazetarja.com/{{MEDIA_URL}}{{object.fotografit.url}}">
+    <meta property="og:url" content="https://www.gazetarja.com/{{object.slug}}">
+
+    {% elif request.path == '/' %}
+    <title>Portali Gazetarja - LAJMI FUNDIT</title>
+    <meta name="description" content="Gazetarja i'u sjell në kohë reale, sekond pas sekonde informacione dhe lajme, këshilla dhe analiza nga të gjitha sferat e jetës.">
+    <meta property="og:image" content="https://gazetarja.com/{% static '/vendor/img/profilelogito.jpg' %}">
+
+    {% else %}
+     <title>{{ kategorit.title }} - Portali Gazetarja</title>
+     <meta name="title" content="{{ kategorit.title }} - Portali Gazetarja">
+     <meta property="og:image" content="https://gazetarja.com/{% static '/vendor/img/profilelogito.jpg' %}">
+     {% endif %}
+
+    {% if object.slug in request.path %}
+    <title>{{object.titulli}}</title>
+    <meta name="twitter:card" value="summary_large_image">
+    <meta name="twitter:site" content="@gazetarja_">
+    <meta name="twitter:creator" content="@SimonGjokaj">
+    <meta name="twitter:title" content="{{object.titulli}}">
+    <meta name="twitter:description" property="og:description" content="{{object.detajet|striptags|truncatewords:30}}">
+    <meta name='twitter:image' content="https://gazetarja.com/{{MEDIA_URL}}{{object.fotografit.url}}">
+
+    {% elif request.path == '/' %}
+    <title>Portali Gazetarja - LAJMI FUNDIT</title>
+    <meta name="twitter:card" value="summary_large_image">
+    <meta name="twitter:site" content="@gazetarja_">
+    <meta name="twitter:creator" content="@SimonGjokaj">'
+    <meta name="twitter:title" content="Portali Gazetarja - LAJMI FUNDIT">
+    <meta name="twitter:description" content="Gazetarja i'u sjell në kohë reale, sekond pas sekonde informacione dhe lajme, këshilla dhe analiza nga të gjitha sferat e jetës.">
+    <meta name="twitter:image" content="https://gazetarja.com/{% static '/vendor/img/profilelogito.jpg' %}">
+
+    {% else %}
+     <title>{{ kategorit.title }} - Portali Gazetarja</title>
+     <meta name="twitter:card" value="summary_large_image">
+     <meta name="twitter:site" content="@gazetarja_">
+     <meta name="twitter:creator" content="@SimonGjokaj">'
+     <meta name="twitter:title" content="{{ kategorit.title }} - Portali Gazetarja">
+     <meta name="twitter:description" content="Gazetarja i'u sjell në kohë reale, sekond pas sekonde informacione dhe lajme, këshilla dhe analiza nga të gjitha sferat e jetës.">
+     <meta name="twitter:image" content="https:/gazetarja.com/{% static '/vendor/img/profilelogito.jpg' %}">
+     {% endif %}
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/font-awesome.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/animate.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/font.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/li-scroller.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/slick.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/jquery.fancybox.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/theme.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}">
+
+</head>
+<body>
+<div id="preloader">
+  <div id="status">&nbsp;</div>
+</div>
+<a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
+<div class="container">
+  <header id="header">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="header_top">
+          <div class="header_top_left">
+            <ul class="top_nav">
+              {% if user.is_authenticated %}
+              <li class="active" ><a href="{% url 'logout' %}">Shkyqu</a></li>
+              <li><a href="{% url 'lajme-create' %}">Krijo Lajmin</a></li>
+              <li><a href="{% url 'profile' %}">Profili</a></li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="header_top">
+          <div class="header_top_right">
+            <p>info@gazetarja.com | marketing@gazetarja.com</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="header_bottom">
+          <div class="logo_area"><a href="{% url 'lajme-home' %}" class="logo"><img src="{% static '/vendor/img/logito.png' %}" alt=""></a></div>
+          <div class="add_banner"><a href="#"><img src="{% static '/images/addbanner123.jpg' %}" alt=""></a></div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section id="navArea">
+    <nav class="navbar navbar-inverse" role="navigation">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav main_nav">
+          <li class="active"><a href="{% url 'lajme-home' %}"><span class="fa fa-home desktop-home"></span><span class="mobile-show">Home</span></a></li>
+          {% for kat in katego %}
+          <li><a href="{% url 'category' kat.id kat.slug %}">{{kat.title}}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+       <div class="sim_banner"><a href="#"><img src="{% static '/images/addbanner123.jpg' %}" alt=""></a>
+    </nav>
+    {% if messages %}
+            {% for message in messages %}
+              <div style="text-align: center;" class="alert alert-{{ message.tags }}">
+                {{ message }}
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+              </div>
+            {% endfor %}
+          {% endif %}
+    {% block content %}
+  </section>
+
+    {% endblock %}
+  <footer id="footer">
+    <div class="footer_top">
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-4">
+          <div class="footer_widget wow fadeInLeftBig">
+            <h2>Rrjetet Sociale</h2>
+            <a target="_blank" href="https://www.facebook.com/gazetarjaofficial" class="fa fa-facebook"></a>
+            <a target="_blank" href="https://twitter.com/gazetarja_" class="fa fa-twitter"></a>
+            <a target="_blank" href="https://www.instagram.com/portaligazetarja/" class="fa fa-instagram"></a>
+            <a target="_blank" href="https://www.youtube.com/channel/UCwgCcDBhr7-tlmWTfx0OJow" class="fa fa-youtube"></a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+          <div class="footer_widget wow fadeInDown">
+            <h2>Kategoritë</h2>
+            <ul class="tag_nav">
+              {% for kat in katego %}
+              <li><a href="{% url 'category' kat.id kat.slug %}">{{kat.title}}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+          <div class="footer_widget wow fadeInRightBig">
+            <h2>Info</h2>
+            <p>Ky portal mirëmbahet nga Ekipa zhvilluese e "Gazetarja". Materialet dhe informacionet në këtë portal nuk mund të kopjohen, të shtypen ose të përdoren në çfarëdo forme tjetër për qëllime përfitimi..</p>
+            <address>
+            Informata: info@gazetarja.com  <br>Marketing: marketing@gazetarja.com</br>
+            </address>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer_bottom">
+      <p class="copyright">&copy; 2021 Portali Online Gazetarja - Të gjitha të drejtat janë të rezervuara</p>
+    </div>
+  </footer>
+</div>
+<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+<script src="{% static 'assets/js/wow.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/js/slick.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.li-scroller.1.0.js' %}"></script>
+<script src="{% static 'assets/js/jquery.newsTicker.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.fancybox.pack.js' %}"></script>
+<script src="{% static 'assets/js/custom.js' %}"></script>
+
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+</body>
+</html>

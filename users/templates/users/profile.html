@@ -1,0 +1,27 @@
+{% extends "main/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<section id="contentSection">
+        <img style="display: block; margin-left: auto; margin-right: auto;" class="rounded-circle account-imgio" src="{{ user.profile.image.url }}">
+        <h2 style="text-align: center;" class="account-headingio"><i style="color: #EB4646;" class="fa fa-user"></i> {{ user.username }}</h2>
+        <div style="display: block; margin-left: auto; margin-right: auto;">
+          <p style="font-weight: bold; text-align: center; " class="text-secondary"><i style="color: #EB4646;" class="fa fa-birthday-cake"></i> {{ user.profile.ditlindja }}</p>
+          <p style="font-weight: bold; text-align: center; " class="text-secondary"><i style="color: #EB4646;" class="fa fa-transgender"></i> {{ user.profile.gjinia }}</p>
+          
+ {% load i18n %}
+{% language 'sq' %}    
+      <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <fieldset class="form-group">
+              {{ u_form|crispy }}
+              {{ p_form|crispy }}
+          </fieldset>
+          <div class="form-group">
+              <button style="width: 100%;" class="btn btn-success" type="submit">Update</button>
+          </div>
+      </form>
+{% endlanguage %}
+
+    </section>
+{% endblock %}

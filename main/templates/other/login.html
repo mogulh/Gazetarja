@@ -1,0 +1,32 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+<section id="contentSection">
+    <div style="max-width: 350px; margin-top: 13rem; margin-bottom: 13rem;" class="container">
+        <img style="display: block; margin-left: auto; margin-right: auto;" class="account-imgiol" src="{% static '/assets/css/images/iconajeme.png' %}">
+{% load i18n %}
+{% language 'sq' %}
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend style="text-align: center; color: white;" class="border-bottom mb-4">KYQU</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button style="width: 100%;" class="btn-red btn" type="submit">Kyqu</button>
+            </div>
+        </form>
+{% endlanguage %}
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Nuk keni llogari? - <a class="ml-2" style="text-decoration: underline;" href="#">Kliko Ketu Per Tu Regjistruar</a>
+            </small>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+

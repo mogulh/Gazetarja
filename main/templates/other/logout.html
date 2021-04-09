@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+<section id="contentSection">
+<div class="content-sectionsio">
+    <img style="display: block; margin-left: auto; margin-right: auto; margin-top: 3rem;" class="account-imgiol" src="{% static '/assets/css/images/iconajeme.png' %}">
+    <h3 style="text-align: center; margin-top: 10rem;">Ju Sapo Jeni Shkyqur Nga Llogaria Juaj..!</h3>
+        <h5 class="simson" style="text-align: center"><small class="text-muted container ">
+            <a style="width: 50%;" class="btn btn-success" href="{% url 'lajme-home' %}">Vazhdoni Ne Kryefaqe</a>
+            <a style="width: 50%" class="btn btn-danger" href="{% url 'login' %}">Kyquni Prap</a>
+        </small></h5>
+  </div>
+ </section>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block content %}
+  <section id="contentSection">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="left_content">
+          <div class="error_page">
+
+            <h3>NA VJEN KEQ</h3>
+            <img style="display: block; margin-left: auto; margin-right: auto;" class="account-imgiol" src="{% static '/assets/css/images/found.png' %}">
+            <p>Fatkeqësisht, faqja që po kërkoni nuk mund të gjendej. Mund të jetë përkohësisht e padisponueshëm, lëvizur ose nuk ekziston më.</p>
+            <span></span> <a href="{% url 'lajme-home' %}" class="wow fadeInLeftBig">Kthehu ne Kryefaqe</a> </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4">
+        <aside class="right_content">
+          <div class="single_sidebar">
+            <h2><span>Me Te Lexuarat</span></h2>
+            <ul class="spost_nav">
+              {% for read in shikime %}
+              {% if forloop.counter < 6 %}
+              <li>
+                <div class="media wow fadeInDown"> <a href="{% url 'lajme-detail' read.id read.slug %}" class="media-left"> <img alt="" src="{{MEDIA_URL}}{{read.fotografit.url}}"> </a>
+                  <div class="media-body"> <a href="{% url 'lajme-detail' read.id read.slug %}" class="catg_title"> {{ read.titulli }} </a> </div>
+                </div>
+              </li>
+              {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+{% endblock %}
