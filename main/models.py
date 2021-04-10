@@ -52,6 +52,7 @@ class Lajmet(models.Model):
 			output_size = (1100, 620)
 			img.thumbnail(output_size)
 			img.save(self.fotografit.path)
+			
 
 
 class SponsorPost(models.Model):
