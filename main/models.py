@@ -46,6 +46,12 @@ class Lajmet(models.Model):
 		value = self.titulli
 		self.slug = slugify(value, allow_unicode=True)
 		super().save(*args, **kwargs)
+		
+		img = Image.open(self.fotografit.path)
+		if img.height > 620 or img.width > 1100:
+			output_size = (1100, 620)
+			img.thumbnail(output_size)
+			img.save(self.fotografit.path)
 
 
 class SponsorPost(models.Model):
