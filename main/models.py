@@ -54,7 +54,6 @@ class Lajmet(models.Model):
 			img.save(self.fotografit.path)
 			
 
-
 class SponsorPost(models.Model):
 	titulli = models.CharField(default='', max_length=350)
 	slug = models.SlugField(default='', editable=False, max_length=1000)
