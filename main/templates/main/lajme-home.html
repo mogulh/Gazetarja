@@ -230,7 +230,7 @@
             <h2><span>Tech</span></h2>
             <ul class="spost_nav">
               {% for te in tech %}
-              {% if forloop.counter < 6 %}
+              {% if forloop.counter < 4 %}
               <li>
                 <div class="media wow fadeInDown"> <a href="{% url 'lajme-detail' te.id te.slug %}" class="media-left"> <img alt="" src="{{MEDIA_URL}}{{te.fotografit.url}}"> </a>
                   <div class="media-body"> <a href="{% url 'lajme-detail' te.id te.slug %}" class="catg_title"> {{ te.titulli }} </a> </div>
