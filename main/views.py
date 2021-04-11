@@ -58,7 +58,7 @@ def category(request,slug,pk):
 
 class UserLajmetListView(ListView):
     model = Lajmet
-    template_name = 'main/user_posts.html'  # <app>/<model>_<viewtype>.html
+    template_name = 'main/user_posts.html'
     context_object_name = 'lajmets'
     paginate_by = 15
     query_pk_and_slug = True
@@ -80,7 +80,7 @@ class UserLajmetListView(ListView):
 class LajmetListView(ListView):
     model = Kategori
     model = Lajmet
-    template_name = 'main/lajme-home.html' # <app>/<model>_<viewtype>.html
+    template_name = 'main/lajme-home.html'
     context_object_name = 'lajmets'
     query_pk_and_slug = True
 
@@ -95,6 +95,7 @@ class LajmetListView(ListView):
         context['showbizikata'] = Lajmet.objects.filter(kategorit=3, verified=True).order_by('-data_e_postimit')[1:]
         context['botkat'] = Lajmet.objects.filter(kategorit=6, verified=True).order_by('-data_e_postimit')[0:]
         context['botakata'] = Lajmet.objects.filter(kategorit=6, verified=True).order_by('-data_e_postimit')[1:]
+        context['tech'] = Lajmet.objects.filter(kategorit=5, verified=True).order_by('-data_e_postimit')
         context['lajmet'] = Lajmet.objects.order_by('-data_e_postimit').filter(verified=True)
         context['katego'] = Kategori.objects.all()
         context['shikime'] = Lajmet.objects.all().order_by('-shikime')

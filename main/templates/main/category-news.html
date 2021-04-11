@@ -101,28 +101,4 @@
         }
     });
   </script>
-
-
-
-
-<!-- <main class="container mt-3 mb-5">
-	<h3 class="border-bottom pb-1 my-4">{{kategorit.title}}</h3>
-   
-    {% for lajm in lajmet %}
-	<div class="card mb-4 shadow">
-	  <div class="row no-gutters">
-	    <div class="col-md-3">
-            <img style="max-width: 200px;" src="{{MEDIA_URL}}{{lajm.fotografit.url}}" class="card-img-top" alt="{{lajm.titulli}}">
-	    </div>
-	    <div class="col-md-8">
-	      <div class="card-body">
-	        <h5 class="card-title">{{lajm.titulli}}</h5>
-	        <p class="card-text">{{lajm.detajet|safe}}</p>
-	        <p class="card-text"><a href="{% url 'lajme-detail' lajm.id lajm.slug %}" class="btn btn-sm btn-primary">Read Full</a></p>
-	      </div>
-	    </div>
-	  </div>
-    </div>
-    {% endfor %}
-</main> -->
 {% endblock %}
