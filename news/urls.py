@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from django.urls import path, include, re_path
 from django.conf import settings
@@ -15,19 +15,19 @@ handler404 = 'main.views.error_404_view'
 
 sitemaps = {
     'lajmet': LajmetSitemap,
-    }
+}
 
 urlpatterns = [
-    url(r'^ads/', include('ads.urls')),
+    path('ads/', include('ads.urls')),
     path('aktivizohu-ne-gazet/', admin.site.urls),
-    path('',include('main.urls')),
+    path('', include('main.urls')),
     path('robots.txt', include('robots.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}),
     re_path('djga/', include('google_analytics.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('profili-juaj/', user_views.profile, name='profile'),
-    re_path(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
-    re_path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
+    re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
+    re_path(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
 ]
 
 if settings.DEBUG:

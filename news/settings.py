@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'robots',
     'ads',
     'sekizai',
+    'django_js_reverse',
 ]
 
 SITE_ID = 1

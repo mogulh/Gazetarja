@@ -1,11 +1,11 @@
 -f /usr/share/pip-wheels
-amqp==2.6.1
-asgiref==3.3.1
-beautifulsoup4==4.9.3
-billiard==3.6.4.0
-celery==4.4.7
-certifi==2020.12.5
-chardet==4.0.0
+amqp
+asgiref
+beautifulsoup4
+billiard
+celery
+certifi
+chardet
 Django==3.2
 django-ckeditor==6.0.0
 django-crispy-forms==1.11.2
