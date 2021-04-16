@@ -1,4 +1,6 @@
 {% load static %}
+{% load ads_tags %}
+{% load sekizai_tags %}
 
 <!DOCTYPE html>
 <html prefix="og: https://ogp.me/ns#">
@@ -103,7 +105,7 @@
       <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="header_bottom">
           <div class="logo_area"><a href="{% url 'lajme-home' %}" class="logo"><img src="{% static '/vendor/img/logito.png' %}" alt=""></a></div>
-          <div class="add_banner"><a href="#"><img src="{% static '/images/addbanner123.jpg' %}" alt=""></a></div>
+          <div class="add_banner"><a href="#"><img src="{% render_ads_zone 'header' %}" alt=""></a></div>
         </div>
       </div>
     </div>

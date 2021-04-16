@@ -9,6 +9,7 @@ from django.contrib.sitemaps.views import sitemap
 from users import views as user_views
 from django.views.static import serve
 from django.conf.urls import handler404
+from django.conf.urls import include, url
 
 handler404 = 'main.views.error_404_view'
 
@@ -17,6 +18,7 @@ sitemaps = {
     }
 
 urlpatterns = [
+    url(r'^ads/', include('ads.urls')),
     path('aktivizohu-ne-gazet/', admin.site.urls),
     path('',include('main.urls')),
     path('robots.txt', include('robots.urls')),
