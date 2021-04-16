@@ -148,3 +148,4 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 
+DEFAULT_AUTO_FIELD='django.db.models.AutoField'
