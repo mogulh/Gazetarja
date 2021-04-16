@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'main.apps.MainConfig',
     'users.apps.UsersConfig',
     'robots',
+    'ads',
+    'sekizai',
 ]
 
 SITE_ID = 1
@@ -69,6 +71,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'sekizai.context_processors.sekizai',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
